@@ -10,5 +10,7 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	http.ListenAndServe(":8888", http.HandlerFunc(helloHandler))
+	router := http.NewServeMux()
+	router.HandleFunc("/hell", http.HandlerFunc(helloHandler))
+	http.ListenAndServe(":8888", router)
 }
